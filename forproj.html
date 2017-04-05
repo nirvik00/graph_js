@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Result</title>
+<style>
+		table{
+			border-collapse:collapse;
+		}
+		th,td{
+			padding: 10 px;
+			text-align:left;
+			font-family:courier; 		
+			color:black;		
+			font-size:17px;				
+			//border-top: thin solid;     		
+			cellspacing:4px;
+			cellpadding:4px;
+		}
+		.leftdiv{
+			float: left;
+		    width: 300px;
+		    height: 20px;
+		    margin-left:50px;
+		    margin-top: 70px;
+		    height:600px;
+		    width:500px;
+		    font-size:8px;
+		}
+		.rightdiv{
+			float: left;
+			margin-left: 100px;	
+		   	margin-right: 10px;
+		   	margin-top: 70px;
+		   	//background-color: skyblue;
+		   	font-size:8px;
+		}
+	</style>
+</head>
+<body>
+<div class="rightdiv">
+<canvas id="gr" width="1000" height="700" />
+</div>
+<script>
+var canvas=document.getElementById('gr');
+var ctx=canvas.getContext('2d');
+ctx.fillStyle="rgb(255,255,0)";
+ctx.fillRect(0,0,canvas.width, canvas.height);
+ctx.strokeStyle="rgb(150,150,150)";
+</script>
+<script src="scriptsrc/jquery-3.2.0.min.js"></script>
+<script src="scriptsrc/springy.js"></script>
+<script src="scriptsrc/springyui.js"></script>
+<script>
+var graph = new Springy.Graph();
+graph.addNodes('user_1', 'user_2', 'user_3', 'user_4', 'user_5', 'user_6', 'user_7');
+graph.addNodes('prod_1', 'prod_2', 'prod_3', 'prod_4','prod_5','prod_6','prod_7');
+
+graph.addEdges(
+  ['user_1', 'prod_3', {color: '#6A4A3C', label: 'USER 1'}],
+  ['user_1', 'prod_2', {color: '#6A4A3C', label: 'USER 1'}],
+  ['user_1', 'prod_4', {color: '#6A4A3C',  label: 'USER 1'}],
+  ['user_1', 'prod_5', {color: '#6A4A3C', label: 'USER 1'}],
+  
+  ['user_2', 'prod_2', {color: '#CC333F', label: 'USER 2'}],
+  ['user_2', 'prod_1', {color: '#CC333F', label: 'USER 2'}],
+  ['user_2', 'prod_4', {color: '#CC333F', label: 'USER 2'}],
+  ['user_2', 'prod_5', {color: '#CC333F', label: 'USER 2'}],
+  
+  ['user_3', 'prod_1', {color: '#EB6841', label: 'USER 3'}],
+  ['user_3', 'prod_4', {color: '#EB6841', label: 'USER 3'}],
+  ['user_3', 'prod_6', {color: '#EB6841', label: 'USER 3'}],
+  ['user_3', 'prod_5', {color: '#EB6841', label: 'USER 3'}],
+  
+  ['user_4', 'prod_1', {color: '#EDC951', label: 'USER 4'}],
+  ['user_4', 'prod_2', {color: '#EDC951', label: 'USER 4'}],
+  ['user_4', 'prod_3', {color: '#EDC951', label: 'USER 4'}],
+  ['user_4', 'prod_7', {color: '#EDC951', label: 'USER 4'}],
+  
+  ['user_5', 'prod_1', {color: '#6A4A3C', label: 'USER 5'}],
+  ['user_5', 'prod_3', {color: '#6A4A3C', label: 'USER 5'}],
+  ['user_5', 'prod_2', {color: '#6A4A3C', label: 'USER 5'}],
+  ['user_5', 'prod_7', {color: '#6A4A3C', label: 'USER 5'}],
+  
+  ['user_6', 'prod_1', {color: '#BE7D3C', label: 'USER 6'}],
+  ['user_6', 'prod_3', {color: '#BE7D3C', label: 'USER 6'}],
+  ['user_6', 'prod_4', {color: '#BE7D3C', label: 'USER 6'}],
+  ['user_6', 'prod_6', {color: '#BE7D3C', label: 'USER 6'}],
+  
+  ['user_7', 'prod_1', {color: '#7DBE3C', label: 'USER 7'}],
+  ['user_7', 'prod_3', {color: '#7DBE3C', label: 'USER 7'}],
+  ['user_7', 'prod_6', {color: '#7DBE3C', label: 'USER 7'}],
+  ['user_7', 'prod_7', {color: '#7DBE3C'}]
+);
+
+jQuery(function(){
+  var springy = jQuery('#gr').springy({
+    graph: graph
+  });
+});
+</script>
+<br><br><br><br>
+</body>
+</html>
